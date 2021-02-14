@@ -21,14 +21,26 @@ namespace ConsoleUI
                  Console.WriteLine("Markası {0} Rengi {1} Model Yılı {2} Günlük Fiyatı {3} Tanımı {4}",car.BrandId,car.ColorId,car.ModelYear,car.DailyPrice,car.Description);
             }
 
-            Console.WriteLine("************* ID = 3 OLAN ARAÇ BİLGİLERİ *************");
+            Console.WriteLine("************* ID = 3 OLAN ARAÇLAR *************");
 
 
-            var selectedCar = carManager.GetById(3);
-            Console.WriteLine("Seçitğiniz araç {0} model yılı olup, {1} fiyatı {2}", selectedCar.ModelYear, selectedCar.Description, selectedCar.DailyPrice);
+            foreach (var car in carManager.GetCarsByBrandId(1))
+            {
+                Console.WriteLine("Markası {0} Rengi {1} Model Yılı {2} Günlük Fiyatı {3} Tanımı {4}", car.BrandId, car.ColorId, car.ModelYear, car.DailyPrice, car.Description);
+            }
 
  
 
+            Console.WriteLine("************* Renk ID = 5 OLAN ARAÇLAR *************");
+
+
+            foreach (var car in carManager.GetCarsByColorId(5))
+            {
+                Console.WriteLine("Seçitğiniz araç {0} model yılı olup, {1} fiyatı {2}", car.ModelYear, car.Description, car.DailyPrice);
+            }
+
+
+            
             Console.WriteLine("************* LİSTEYE YENİ ARAÇ EKLEME *************");
 
 
@@ -41,7 +53,7 @@ namespace ConsoleUI
             }
 
             Console.WriteLine("************************** HATALI ARAÇA EKLEME ************************");
-            carManager1.Add(new Car { BrandId = 1, ColorId = 6, Id = 7, DailyPrice = 0, Description = "Passat", ModelYear = 2021 });
+            carManager1.Add(new Car { BrandId = 1, ColorId = 6, Id = 8, DailyPrice = 0, Description = "Passat", ModelYear = 2021 });
 
         }
     }
