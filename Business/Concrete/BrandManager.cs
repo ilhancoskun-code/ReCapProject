@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class BrandManager : IBrandService
+    public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
 
@@ -38,7 +38,7 @@ namespace Business.Concrete
 
         public void Update(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandDal.Update(brand);
         }
     }
 }
