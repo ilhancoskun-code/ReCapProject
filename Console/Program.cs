@@ -19,18 +19,30 @@ namespace ConsoleUI
 
             Console.WriteLine("*********** TÜM ARAÇLARI DETAYI İLE LİSTELE - DTO ***************");
 
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+
+            if (result.Success == true)
             {
-                 Console.WriteLine("Modeli {0} Markası {1} Rengi {2} Günlük Fiyatı {3}",car.CarName,car.BrandName,car.ColorName,car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine("Modeli {0} Markası {1} Rengi {2} Günlük Fiyatı {3}", car.CarName, car.BrandName, car.ColorName, car.DailyPrice);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
             Console.WriteLine("\n\n\n");
             Console.WriteLine("*********** YENİ ARAÇ EKLEME VE GÜNCELLEME SONRASI LİSTE ***************");
 
             CarManager carManager1 = new CarManager(new EfCarDal());
+            var result2 = carManager1.GetCarDetails();
             carManager1.Add(new Car {Id=8,BrandId=1,ColorId=2,ModelYear=2021,DailyPrice=900,Description="Touareg"});
             carManager1.Update(new Car {Id=7,Description="Bettle",ColorId=4,ModelYear=2020,DailyPrice=750,BrandId=1});
 
-            foreach (var car in carManager1.GetCarDetails())
+            
+            foreach (var car in carManager1.GetCarDetails().Data)
             {
                 Console.WriteLine("Modeli {0} Markası {1} Rengi {2} Günlük Fiyatı {3}", car.CarName, car.BrandName, car.ColorName, car.DailyPrice);
             }
@@ -42,7 +54,7 @@ namespace ConsoleUI
             Console.WriteLine("*********** SİLME SONRASI LİSTELEME ***************");
 
             CarManager carManager2 = new CarManager(new EfCarDal());
-            foreach (var car in carManager2.GetCarDetails())
+            foreach (var car in carManager2.GetCarDetails().Data)
             {
                 Console.WriteLine("Modeli {0} Markası {1} Rengi {2} Günlük Fiyatı {3}", car.CarName, car.BrandName, car.ColorName, car.DailyPrice);
             }
@@ -57,7 +69,7 @@ namespace ConsoleUI
             brandManager.Update(new Brand { Id = 7, Name = "Suzuki" });
             brandManager.Delete(new Brand { Id = 8 });
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine("Marka Id {0} / Markası {1} ", brand.Id,brand.Name);
 
@@ -73,7 +85,7 @@ namespace ConsoleUI
             colorManager.Update(new Color {Id=5,Name="Kırmızı"});
             colorManager.Delete(new Color {Id=7});
 
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine("Renk ID: {0} -- Renk : {1}", color.Id,color.Name);
             }
