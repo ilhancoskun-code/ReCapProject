@@ -46,10 +46,7 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetAll()
         {
  
-            if (GetAll().Data.Count==0)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.NotListed);
-            }
+           // hata kondisyonu duruma göre ekelenebilir
 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
  
@@ -62,6 +59,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
+   
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
