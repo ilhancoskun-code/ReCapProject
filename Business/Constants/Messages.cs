@@ -30,8 +30,33 @@ namespace Business.Constants
         public static string ColorDeleted = "Renk silindi";
         public static string ColorUpdated = "Renk bilgisi güncellendi";
 
+        // Customer Messages
+
+        public static string CustomerdAdded = "Müşteri eklendi";
+        public static string CustomerListed = "Müşteri listelendi";
+        public static string CustomerDeleted = "Müşteri silindi";
+        public static string CustomerUpdated = "Müşteri bilgisi güncellendi";
+        public static string NotRegistered="Müşteri kullanıcı olarak sisteme kayıtlı değilzz";
+
+        // User Messages
+
+        public static string UserdAdded = "Kullanıcı eklendi";
+        public static string UserListed = "Kullanıcı listelendi";
+        public static string UserDeleted = "Kullanıcı silindi";
+        public static string UserUpdated = "Kullanıcı bilgisi güncellendi";
+
+
+        // Rental Messages
+
+        public static string RentaldAdded = "Kiralama bilgisi eklendi";
+        public static string RentalListed = "Kiralama bilgisi listelendi";
+        public static string RentalDeleted = "Kiralama bilgisi silindi";
+        public static string RentalUpdated = "Kiralama bilgisi güncellendi";
+        public static string NotAvaliable="Araç kiralamak için uygun değil";
+
         // Ortak Mesaj
 
         public static string NotListed = "Listelenecek ürün bulunamadı";
+        
     }
 }
